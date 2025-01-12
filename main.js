@@ -1,10 +1,11 @@
 const params = new URLSearchParams(document.location.search);
 if (params.has("path")) {
   let path = params.get("path");
+  let lang;
   if (params.has("lang")) {
-    let lang = params.get("lang");
+    lang = params.get("lang");
   } else {
-    let lang = "en";
+    lang = "en";
   }
   // Get HTML and metadata for article on English Wikipedia
   let base = "https://api.wikimedia.org/core/v1/wikipedia/";
