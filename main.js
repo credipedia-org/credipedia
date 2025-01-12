@@ -11,9 +11,9 @@ if (params.has("path")) {
     .then((res) => {
       html = res.html
         .replaceAll("/n", "<br>")
-        .replaceAll("en.wikipedia.org", "credipedia.org");
+        .replaceAll("wikipedia.org", "credipedia.org");
       document.getElementById("content").innerHTML = res.html;
-      document.getElementById("title").innerHTML = res.title;
+      document.getElementById("title").innerText = res.title;
       console.log(res);
     })
     .catch(console.error);
