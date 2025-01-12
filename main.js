@@ -1,7 +1,7 @@
 const params = new URLSearchParams(document.location.search);
 if (params.has("path")) {
   let path = params.get("path");
-  if (parames.has("lang")) {
+  if (params.has("lang")) {
     let lang = params.get("lang");
   } else {
     let lang = "en";
