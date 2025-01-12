@@ -1,9 +1,14 @@
 const params = new URLSearchParams(document.location.search);
 if (params.has("path")) {
   let path = params.get("path");
+  if (parames.has("lang")) {
+    let lang = params.get("lang");
+  } else {
+    let lang = "en";
+  }
   // Get HTML and metadata for article on English Wikipedia
-  let base = "https://api.wikimedia.org/core/v1/wikipedia/en/page/";
-  let url = base + path + "/with_html";
+  let base = "https://api.wikimedia.org/core/v1/wikipedia/";
+  let url = base + lang + "/page/" + path + "/with_html";
   fetch(url)
     .then((res) => {
       return res.json();
@@ -15,6 +20,9 @@ if (params.has("path")) {
       document.getElementById("content").innerHTML = res.html;
       document.getElementById("title").innerText = res.title;
       console.log(res);
+      document.querySelectorAll('[href*="wikipedia.org"]').forEach((link) => {
+        link.href = link.href.replace("wikipedia.org", "credipedia.org");
+      });
     })
     .catch(console.error);
 }
